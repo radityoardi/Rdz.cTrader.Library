@@ -1,15 +1,9 @@
 name: publish-nuget
 
 on:
-  create:
-    branches: 
-      - release/**
   push:
-    branches:
-    - master
-  pull_request:
-    branches:
-    - master
+    tags:
+    - v*
     
 jobs:
   build:
