@@ -47,6 +47,6 @@ jobs:
     - name: Build
       run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
       
-#    - name: Publish to NuGet
-#      if: startsWith(github.ref, 'refs/heads/master')
-#      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+    - name: Publish to NuGet
+      if: startsWith(github.ref, 'refs/heads/master')
+      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
