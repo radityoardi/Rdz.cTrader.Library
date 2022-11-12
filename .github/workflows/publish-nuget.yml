@@ -38,8 +38,11 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'
+    
+    - name: Get .NET info
+      run: dotnet --info
 
-    - name: Restore dependencies
+    - name: Restore NuGet dependencies
       run: nuget restore $SOLUTION
 
     - name: Build
