@@ -7,13 +7,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>Rdz cTrader Library</Title>
     <Authors>radityo.ardi</Authors>
-    <Description>This is the common library used to build cTrader Algo or Indicators.</Description>
+    <Description>This is the common library used as a helper in building cTrader Algo or Indicators.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 	<PropertyGroup>
 		<Deterministic>false</Deterministic>
-		<AssemblyVersion>1.0.5</AssemblyVersion>
+		<AssemblyVersion>$([System.DateTime]::UtcNow.AddYears(-2021).Year.ToString()).$([System.DateTime]::UtcNow.ToString("MMdd")).$([System.DateTime]::UtcNow.ToString("HHmm")).$([System.DateTime]::UtcNow.ToString("ssff"))</AssemblyVersion>
 		<VersionPrefix>$(AssemblyVersion)</VersionPrefix>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>

@@ -17,7 +17,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout Source Code
+      uses: actions/checkout@v2
 
     - name: Install KZRNM Get csproj versions
       id: csproj-version
@@ -39,16 +40,13 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '6.0.x'
-    
-    - name: Get .NET info
-      run: dotnet --info
 
-    - name: Restore NuGet dependencies
+    - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
     - name: Build
       run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
       
-    - name: Publish
-      if: startsWith(github.ref, 'refs/heads/master')
-      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+#    - name: Publish to NuGet
+#      if: startsWith(github.ref, 'refs/heads/master')
+#      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
