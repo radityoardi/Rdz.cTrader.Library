@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rdz.cTrader.Library", "Rdz.cTrader.Library\Rdz.cTrader.Library.csproj", "{4721F0A9-C03F-475B-919B-1E2907F7B192}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library Tester", "Library Tester\Library Tester.csproj", "{31E1F6F5-E13A-488F-97EE-742B9843D465}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4721F0A9-C03F-475B-919B-1E2907F7B192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4721F0A9-C03F-475B-919B-1E2907F7B192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4721F0A9-C03F-475B-919B-1E2907F7B192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4721F0A9-C03F-475B-919B-1E2907F7B192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31E1F6F5-E13A-488F-97EE-742B9843D465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E1F6F5-E13A-488F-97EE-742B9843D465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E1F6F5-E13A-488F-97EE-742B9843D465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E1F6F5-E13A-488F-97EE-742B9843D465}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BADA307-F017-4BE6-8534-E2C5964E45BB}
+	EndGlobalSection
+EndGlobal
