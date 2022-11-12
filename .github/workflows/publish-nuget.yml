@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Get Project Version
-      uses: kzrnm/get-net-sdk-project-versions-action@v1
+    - uses: kzrnm/get-net-sdk-project-versions-action@v1
         id: get-version
         with:
           proj-path: src/Rdz.cTrader.Library/Rdz.cTrader.Library.csproj
