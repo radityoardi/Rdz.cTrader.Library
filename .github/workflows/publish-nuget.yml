@@ -27,7 +27,7 @@ jobs:
     
     - name: Get Project version
       run: |
-        $version = ${{steps.csproj-version.outputs.assembly-version}}
+        $version = "${{steps.csproj-version.outputs.assembly-version}}"
         Write-Host "Detected version: $version"
         echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
       shell: pwsh
@@ -50,5 +50,5 @@ jobs:
       run: dotnet build $SOLUTION --configuration $BUILD_CONFIG -p:Version=$BUILD_VERSION --no-restore
       
     - name: Publish
-      if: startsWith(github.ref, 'refs/heads/release')
+      if: startsWith(github.ref, 'refs/heads/master')
       run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
