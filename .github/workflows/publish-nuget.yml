@@ -29,10 +29,12 @@ jobs:
         Write-Host "Version exported to: $Env:GITHUB_ENV"
       shell: pwsh
 
-    - name: Get Project Version
+    - name: Install KZRNM Get csproj versions
       uses: kzrnm/get-net-sdk-project-versions-action@v1
       with:
         proj-path: src/Rdz.cTrader.Library/Rdz.cTrader.Library.csproj
+    
+    - name: Get Project version
       run: echo "${{steps.get-version.outputs.assembly-version}}"
 
     - name: Setup NuGet
