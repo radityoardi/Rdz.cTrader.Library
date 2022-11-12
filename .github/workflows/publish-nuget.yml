@@ -30,12 +30,13 @@ jobs:
       shell: pwsh
 
     - name: Install KZRNM Get csproj versions
+      id: csproj-version
       uses: kzrnm/get-net-sdk-project-versions-action@v1
       with:
         proj-path: src/Rdz.cTrader.Library/Rdz.cTrader.Library.csproj
     
     - name: Get Project version
-      run: echo "${{steps.get-version.outputs.assembly-version}}"
+      run: echo "${{steps.csproj-version.outputs.assembly-version}}"
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
