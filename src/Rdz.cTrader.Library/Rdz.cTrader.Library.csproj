@@ -11,29 +11,38 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
-	<PropertyGroup>
-		<Deterministic>false</Deterministic>
-		<AssemblyVersion>$([System.DateTime]::UtcNow.AddYears(-2021).Year.ToString()).$([System.DateTime]::UtcNow.ToString("MMdd")).$([System.DateTime]::UtcNow.ToString("HHmm")).$([System.DateTime]::UtcNow.ToString("ssff"))</AssemblyVersion>
-		<VersionPrefix>$(AssemblyVersion)</VersionPrefix>
-		<FileVersion>$(AssemblyVersion)</FileVersion>
-		<Version>$(AssemblyVersion)</Version>
-		<PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
-	</PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702</NoWarn>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702</NoWarn>
-    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-  </PropertyGroup>
-
   <ItemGroup>
     <Reference Include="cAlgo.API">
       <HintPath>..\cAlgo\cAlgo.API.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <UsingTask TaskName="SetVersionNumber" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildBinPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <CreationYear ParameterType="System.Int16" Required="true" />
+      <GeneratedVersion ParameterType="System.String" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Code Type="Fragment" Language="C#">
+        <![CDATA[
+        GeneratedVersion = $"{DateTime.UtcNow.AddYears(-CreationYear).Year.ToString()}.{DateTime.UtcNow.ToString("Mdd")}.{DateTime.UtcNow.ToString("Hmm")}.{DateTime.UtcNow.ToString("sff")}";
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  <Target Name="Versioning" BeforeTargets="PreBuildEvent">
+    <SetVersionNumber CreationYear="2021">
+      <Output TaskParameter="GeneratedVersion" PropertyName="GeneratedVersion" />
+    </SetVersionNumber>
+    <Message Text="Auto-generated version is: $(GeneratedVersion)" Importance="High" />
+    <PropertyGroup>
+      <AssemblyVersion>$(GeneratedVersion)</AssemblyVersion>
+      <FileVersion>$(GeneratedVersion)</FileVersion>
+      <PackageVersion>$(GeneratedVersion)</PackageVersion>
+      <Version>$(GeneratedVersion)</Version>
+    </PropertyGroup>
+  </Target>
+
 
 </Project>
