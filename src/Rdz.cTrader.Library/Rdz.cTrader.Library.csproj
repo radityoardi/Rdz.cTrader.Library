@@ -9,6 +9,7 @@
     <Authors>radityo.ardi</Authors>
     <Description>This is the common library used as a helper in building cTrader Algo or Indicators.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>..\..\README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
