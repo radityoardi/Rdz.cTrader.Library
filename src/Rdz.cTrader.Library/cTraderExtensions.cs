@@ -39,16 +39,16 @@ namespace Rdz.cTrader.Library
 				return double.NaN;
 		}
 
-		public static int Distance(this Symbol symbol, double highPrice, double lowPrice, bool AlwaysPositive = false, enPriceMode mode = enPriceMode.Pips)
+		public static double Distance(this Symbol symbol, double highPrice, double lowPrice, bool AlwaysPositive = false, enPriceMode mode = enPriceMode.Pips)
 		{
 			double size = symbol.GetSize(mode);
 			if (AlwaysPositive)
 			{
-				return Convert.ToInt32(Math.Abs((highPrice - lowPrice) / size));
+				return Math.Abs((highPrice - lowPrice) / size);
 			}
 			else
 			{
-				return Convert.ToInt32((highPrice - lowPrice) / size);
+				return (highPrice - lowPrice) / size;
 			}
 		}
 
